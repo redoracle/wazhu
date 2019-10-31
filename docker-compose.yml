@@ -64,11 +64,8 @@ services:
       - kibana
     links:
       - kibana:kibana
-      
+
 networks:
-  sll_net:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: 172.13.0.0/24
-         gateway: 172.13.0.1
+    default:
+        external:
+            name: sll_net
