@@ -66,6 +66,6 @@ services:
       - kibana:kibana
 
 networks:
-      - sll_net:
-        external: true
+  sll_net:
+    external: true
        
