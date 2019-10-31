@@ -64,8 +64,7 @@ services:
       - kibana
     links:
       - kibana:kibana
-
-
+      
 networks:
   sll_net:
     driver: bridge
