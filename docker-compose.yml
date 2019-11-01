@@ -7,23 +7,23 @@ services:
     hostname: wazuh-manager
     restart: always
     expose:
-      - ":1514/udp"
-      - ":1515"
-      - ":514/udp"
-      - ":55000"
+      - "1514/udp"
+      - "1515"
+      - "514/udp"
+      - "55000"
     networks:
       sll_net:
-       - ipv4_address: 172.13.0.104
+        ipv4_address: 172.13.0.104
 
   elasticsearch:
     image: wazuh/wazuh-elasticsearch:3.10.2_7.3.2
     hostname: elasticsearch
     restart: always
     expose:
-      - ":9200"
+      - "9200"
     networks:
       sll_net:
-        - ipv4_address: 172.13.0.103
+       ipv4_address: 172.13.0.103
     environment:
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - ELASTIC_CLUSTER=true
@@ -41,7 +41,7 @@ services:
     restart: always
     networks:
       sll_net:
-        - ipv4_address: 172.13.0.102
+       ipv4_address: 172.13.0.102
     depends_on:
       - elasticsearch
     links:
@@ -55,11 +55,11 @@ services:
       - NGINX_PORT=443
       - NGINX_CREDENTIALS
     expose:
-      - ":80"
-      - ":443"
+      - "80"
+      - "443"
     networks:
       sll_net:
-        - ipv4_address: 172.13.0.101
+       ipv4_address: 172.13.0.101
     depends_on:
       - kibana
     links:
