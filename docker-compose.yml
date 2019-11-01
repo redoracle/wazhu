@@ -7,10 +7,10 @@ services:
     hostname: wazuh-manager
     restart: always
     expose:
-      - "1514/udp"
-      - "1515"
-      - "514/udp"
-      - "55000"
+      - ":1514/udp"
+      - ":1515"
+      - ":514/udp"
+      - ":55000"
     networks:
       sll_net:
        - ipv4_address: 172.13.0.104
@@ -20,7 +20,7 @@ services:
     hostname: elasticsearch
     restart: always
     expose:
-      - "9200"
+      - ":9200"
     networks:
       sll_net:
         - ipv4_address: 172.13.0.103
@@ -55,8 +55,8 @@ services:
       - NGINX_PORT=443
       - NGINX_CREDENTIALS
     expose:
-      - "80"
-      - "443"
+      - ":80"
+      - ":443"
     networks:
       sll_net:
         - ipv4_address: 172.13.0.101
