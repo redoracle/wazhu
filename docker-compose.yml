@@ -106,7 +106,7 @@ services:
       - elasticsearch:elasticsearch
       - kibana:kibana
 
-auditbeat:
+  auditbeat:
     image: docker.elastic.co/beats/auditbeat:7.4.2
     hostname: auditbeat
     restart: always
@@ -123,7 +123,7 @@ auditbeat:
       - elasticsearch:elasticsearch
       - kibana:kibana
 
-journalbeat:
+  journalbeat:
     image: docker.elastic.co/beats/journalbeat:7.4.2
     hostname: journalbeat
     restart: always
@@ -143,7 +143,7 @@ journalbeat:
       - elasticsearch:elasticsearch
       - kibana:kibana
       
-heartbeat:
+  heartbeat:
     image: docker.elastic.co/beats/heartbeat:7.4.2
     hostname: heartbeat
     restart: always
@@ -159,7 +159,7 @@ heartbeat:
       - elasticsearch:elasticsearch
       - kibana:kibana
       
-metricbeat:
+  metricbeat:
     image: docker.elastic.co/beats/metricbeat:7.4.2
     hostname: metricbeat
     restart: always
