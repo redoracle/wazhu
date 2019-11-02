@@ -116,7 +116,12 @@ services:
     networks:
       sll_net:
        ipv4_address: 172.13.0.107
+    cap_add:
+      - AUDIT_CONTROL
+      - AUDIT_READ
+    pid: host
     volumes:
+      - 
       - /DATA/Wazuh/Auditbeat/auditbeat.yml:/etc/auditbeat/auditbeat.yml
       - /DATA/Wazuh/Auditbeat/:/Datak
     depends_on:
