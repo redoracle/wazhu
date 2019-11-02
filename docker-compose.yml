@@ -92,11 +92,14 @@ services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.4.2
     hostname: filebeat
+    user: root
     restart: always
     networks:
       sll_net:
        ipv4_address: 172.13.0.106
     volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /DATA/Wazuh/Filebeat/filebeat.yml:/etc/filebeat/filebeat.yml
       - /DATA/Wazuh/Filebeat/:/Datak
     depends_on:
