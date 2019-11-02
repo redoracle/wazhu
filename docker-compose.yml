@@ -170,12 +170,20 @@ services:
     image: docker.elastic.co/beats/metricbeat:7.4.2
     hostname: metricbeat
     restart: always
+    user: root
     networks:
       sll_net:
        ipv4_address: 172.13.0.110
+    cap_add:
+      - dac_read_search
+      - sys_ptrace
     volumes:
       - /DATA/Wazuh/Metricbeat/metricbeat.yml:/etc/metricbeat/metricbeat.yml
       - /DATA/Wazuh/Metricbeat/:/Datak
+      - /:/hostfs:ro
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     depends_on:
       - elasticsearch
       - kibana
